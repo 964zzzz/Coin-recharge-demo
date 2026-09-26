@@ -3,76 +3,189 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Coin Recharge Demo</title>
+<title>Coin Exchange Demo</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#171717}
-.wrap{max-width:520px;margin:0 auto;padding:24px 16px 40px}
-.card{background:#fff;border-radius:20px;padding:20px;box-shadow:0 8px 30px #00000012;margin-bottom:16px}
-h1{margin:0 0 6px;font-size:28px}.sub{color:#666;margin:0 0 20px}
-label{display:block;font-weight:700;margin:14px 0 7px}
-input,select,button{width:100%;padding:13px;border-radius:12px;border:1px solid #ddd;font-size:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pkg{background:#fafafa;cursor:pointer;text-align:left}.pkg b{display:block;font-size:18px}.pkg span{color:#666;font-size:13px}
-.pkg.active{border:2px solid #111;background:#f0f0f0}
-button{border:0;background:#111;color:white;font-weight:700;margin-top:18px;cursor:pointer}
-.notice{font-size:13px;color:#666;line-height:1.5}.success{display:none;background:#eef9f0;padding:14px;border-radius:12px;margin-top:14px}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#f3f4f6;
+  font-family:Arial,sans-serif;
+  color:#111;
+}
+.wrap{
+  max-width:520px;
+  margin:auto;
+  padding:24px 16px;
+}
+.card{
+  background:#fff;
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+.demo{
+  background:#fff3cd;
+  color:#7a5700;
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:700;
+  text-align:center;
+  margin-bottom:18px;
+}
+h1{
+  margin:0 0 6px;
+  font-size:30px;
+}
+.sub{
+  color:#666;
+  margin-bottom:22px;
+}
+label{
+  display:block;
+  font-weight:700;
+  margin:16px 0 8px;
+}
+input,select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  font-size:16px;
+}
+.balance{
+  margin:18px 0;
+  padding:20px;
+  border-radius:18px;
+  background:#f5f5f5;
+  text-align:center;
+}
+.balance small{
+  display:block;
+  color:#666;
+  margin-bottom:8px;
+}
+.balance strong{
+  font-size:30px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.pkg{
+  border:2px solid transparent;
+  background:#f5f5f5;
+  border-radius:16px;
+  padding:18px;
+  cursor:pointer;
+}
+.pkg.active{
+  border-color:#111;
+  background:#fff;
+}
+.pkg b{
+  display:block;
+  font-size:19px;
+}
+.pkg span{
+  color:#666;
+}
+button{
+  width:100%;
+  margin-top:22px;
+  padding:16px;
+  border:0;
+  border-radius:16px;
+  background:#111;
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+}
+.note{
+  margin-top:18px;
+  color:#666;
+  font-size:13px;
+  line-height:1.5;
+}
 </style>
 </head>
+
 <body>
 <div class="wrap">
-  <div class="card">
-    <h1>Coin Recharge</h1>
-    <p class="sub">Demo version — no real payment is processed.</p>
+<div class="card">
 
-    <label for="username">Account username</label>
-    <input id="username" placeholder="@your_username" autocomplete="off">
+<div class="demo">
+DEMO ONLY — NOT REAL MONEY
+</div>
 
-    <label>Choose a package</label>
-    <div class="grid" id="packages"></div>
+<h1>Coin Exchange</h1>
+<div class="sub">
+Demo interface for testing only.
+</div>
 
-    <label for="payment">Payment method</label>
-    <select id="payment">
-      <option>Demo Payment</option>
-      <option>Bank Transfer (demo)</option>
-      <option>Card (demo)</option>
-    </select>
+<label>Demo Balance</label>
+<div class="balance">
+<small>Sample balance</small>
+<strong>8,165,182.42</strong>
+</div>
 
-    <button id="submit">Create Demo Order</button>
-    <div class="success" id="success"></div>
-  </div>
+<label for="username">TikTok username</label>
+<input id="username" placeholder="@your_username">
 
-  <div class="card notice">
-    <b>Security:</b> Never ask customers for TikTok passwords, login codes, or OTPs.
-    A real recharge service should use an authorized payment/recharge integration and
-    verify orders on the server side.
-  </div>
+<label>Choose a package</label>
+
+<div class="grid">
+<div class="pkg active" onclick="selectPkg(this)">
+<b>250 Coins</b>
+<span>Demo package</span>
+</div>
+
+<div class="pkg" onclick="selectPkg(this)">
+<b>500 Coins</b>
+<span>Demo package</span>
+</div>
+
+<div class="pkg" onclick="selectPkg(this)">
+<b>1,500 Coins</b>
+<span>Demo package</span>
+</div>
+
+<div class="pkg" onclick="selectPkg(this)">
+<b>5,000 Coins</b>
+<span>Demo package</span>
+</div>
+</div>
+
+<label>Payment method</label>
+<select>
+<option>Demo Payment</option>
+<option>Test Mode</option>
+</select>
+
+<button onclick="demoOrder()">
+Create Demo Order
+</button>
+
+<div class="note">
+This page is a visual demonstration only. It does not connect to TikTok,
+process payments, or represent a real account balance.
+</div>
+
+</div>
 </div>
 
 <script>
-const packages=[
-  ["70 Coins","¥120"],["350 Coins","¥600"],
-  ["700 Coins","¥1,200"],["1,400 Coins","¥2,400"]
-];
-let selected=packages[0];
-const box=document.getElementById("packages");
-packages.forEach((p,i)=>{
-  const b=document.createElement("button");
-  b.type="button"; b.className="pkg"+(i===0?" active":"");
-  b.innerHTML=`<b>${p[0]}</b><span>${p[1]}</span>`;
-  b.onclick=()=>{
-    selected=p;
-    document.querySelectorAll(".pkg").forEach(x=>x.classList.remove("active"));
-    b.classList.add("active");
-  };
-  box.appendChild(b);
-});
-document.getElementById("submit").onclick=()=>{
-  const u=document.getElementById("username").value.trim();
-  const s=document.getElementById("success");
-  if(!u){alert("Please enter an account username.");return;}
-  s.style.display="block";
-  s.textContent=`Demo order created: ${selected[0]} for ${u}. No real payment was made.`;
-};
+function selectPkg(el){
+  document.querySelectorAll('.pkg')
+    .forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function demoOrder(){
+  alert("Demo order created — no real payment was processed.");
+}
 </script>
+
 </body>
 </html>

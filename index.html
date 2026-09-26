@@ -16,132 +16,228 @@ body{
 }
 
 .wrap{
-  max-width:520px;
+  max-width:560px;
   margin:auto;
-  padding:20px 14px 40px;
+  padding:18px 14px 40px;
 }
 
 .card{
   background:#fff;
-  border-radius:24px;
+  border-radius:26px;
   padding:24px;
   box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
-.badge{
+.demo{
   display:inline-block;
-  background:#fff3cd;
-  color:#8a6200;
-  padding:8px 12px;
-  border-radius:10px;
-  font-weight:700;
+  padding:9px 14px;
+  border-radius:12px;
+  background:#fff0c2;
+  color:#806000;
+  font-weight:800;
   font-size:13px;
-  margin-bottom:14px;
+  margin-bottom:15px;
 }
 
 h1{
-  margin:0 0 6px;
-  font-size:30px;
+  margin:0;
+  font-size:31px;
 }
 
 .sub{
+  margin:7px 0 22px;
   color:#666;
-  margin:0 0 22px;
+  font-size:16px;
+  line-height:1.45;
 }
+
+/* balance */
 
 .balance{
   background:#111;
-  color:#fff;
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:22px;
+  color:white;
+  border-radius:20px;
+  padding:22px;
+  margin-bottom:20px;
 }
 
-.balance small{
+.balance-title{
   color:#bbb;
+  font-size:15px;
 }
 
-.balance strong{
-  display:block;
-  font-size:32px;
-  margin-top:6px;
+.balance-number{
+  font-size:34px;
+  font-weight:800;
+  margin-top:7px;
 }
+
+/* profile */
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:15px;
+  border:1px solid #e2e2e2;
+  border-radius:17px;
+  margin-bottom:20px;
+}
+
+.avatar{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:#222;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:20px;
+}
+
+.profile-name{
+  font-weight:800;
+  font-size:18px;
+}
+
+.profile-user{
+  color:#666;
+  margin-top:3px;
+}
+
+.stats{
+  margin-left:auto;
+  text-align:right;
+  color:#666;
+  font-size:12px;
+}
+
+/* fields */
 
 label{
   display:block;
-  font-weight:700;
-  margin:16px 0 8px;
-}
-
-input,select,button{
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  font-size:16px;
+  font-weight:800;
+  font-size:17px;
+  margin:18px 0 9px;
 }
 
 input,select{
+  width:100%;
+  padding:16px;
   border:1px solid #ddd;
+  border-radius:15px;
   background:#fff;
+  font-size:17px;
+  outline:none;
 }
+
+input:focus{
+  border-color:#111;
+}
+
+/* packages */
 
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:13px;
 }
 
 .pkg{
-  background:#fafafa;
+  padding:17px;
   border:2px solid transparent;
-  padding:16px;
-  border-radius:14px;
+  background:#fafafa;
+  border-radius:17px;
   cursor:pointer;
 }
 
 .pkg.active{
   border-color:#111;
-  background:#f0f0f0;
+  background:#f2f2f2;
 }
 
-.pkg b{
-  display:block;
-  font-size:18px;
+.coin{
+  font-size:19px;
+  font-weight:800;
 }
 
-.pkg span{
-  display:block;
+.coin::before{
+  content:"🪙";
+  margin-right:8px;
+}
+
+.price{
   color:#666;
-  margin-top:6px;
+  margin-top:8px;
+  font-size:16px;
 }
+
+/* button */
 
 button{
+  width:100%;
   border:0;
   background:#111;
-  color:#fff;
-  font-weight:700;
+  color:white;
+  padding:17px;
+  border-radius:15px;
+  font-size:18px;
+  font-weight:800;
   margin-top:20px;
-  cursor:pointer;
 }
 
-.notice{
-  margin-top:18px;
-  padding:16px;
-  background:#f7f7f7;
-  border-radius:14px;
-  color:#666;
-  font-size:13px;
-  line-height:1.5;
-}
+/* result */
 
 .result{
   display:none;
   margin-top:18px;
-  padding:16px;
-  background:#eaf7ee;
+  padding:18px;
+  border-radius:16px;
+  background:#edf8f0;
   color:#176b35;
-  border-radius:14px;
-  font-weight:700;
+}
+
+.result-title{
+  font-weight:800;
+  font-size:17px;
+  margin-bottom:7px;
+}
+
+.result-line{
+  color:#477255;
+  margin-top:4px;
+}
+
+/* security */
+
+.security{
+  margin-top:18px;
+  padding:17px;
+  border-radius:17px;
+  background:#f7f7f7;
+  color:#666;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.security b{
+  color:#444;
+}
+
+@media(max-width:400px){
+  .card{
+    padding:20px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  .balance-number{
+    font-size:30px;
+  }
 }
 </style>
 </head>
@@ -151,43 +247,78 @@ button{
 <div class="wrap">
 <div class="card">
 
-<div class="badge">DEMO / TEST ONLY</div>
+<div class="demo">DEMO / TEST ONLY</div>
 
 <h1>Coin Exchange</h1>
+
 <p class="sub">
 Demo interface — no real money or payment is processed.
 </p>
 
 <div class="balance">
-<small>Demo balance</small>
-<strong id="balance">$8,165.18</strong>
+<div class="balance-title">Demo balance</div>
+<div class="balance-number">$8,165.18</div>
+</div>
+
+<div class="profile">
+<div class="avatar">T</div>
+
+<div>
+<div class="profile-name">THIHAZAW</div>
+<div class="profile-user">@thihazaw</div>
+</div>
+
+<div class="stats">
+Followers<br>
+<strong>337</strong>
+</div>
 </div>
 
 <label for="username">TikTok username</label>
-<input id="username" placeholder="@your_username">
+
+<input
+id="username"
+value="@thihazaw"
+placeholder="@your_username">
 
 <label>Exchange coins</label>
 
 <div class="grid">
 
-<div class="pkg active" data-coins="250" data-value="3.03">
-<b>🪙 250</b>
-<span>Demo $3.03</span>
+<div class="pkg active"
+data-coins="250"
+data-value="3.03">
+
+<div class="coin">250</div>
+<div class="price">Demo $3.03</div>
+
 </div>
 
-<div class="pkg" data-coins="500" data-value="6.07">
-<b>🪙 500</b>
-<span>Demo $6.07</span>
+<div class="pkg"
+data-coins="500"
+data-value="6.07">
+
+<div class="coin">500</div>
+<div class="price">Demo $6.07</div>
+
 </div>
 
-<div class="pkg" data-coins="1500" data-value="18.21">
-<b>🪙 1,500</b>
-<span>Demo $18.21</span>
+<div class="pkg"
+data-coins="1500"
+data-value="18.21">
+
+<div class="coin">1,500</div>
+<div class="price">Demo $18.21</div>
+
 </div>
 
-<div class="pkg" data-coins="5000" data-value="60.70">
-<b>🪙 5,000</b>
-<span>Demo $60.70</span>
+<div class="pkg"
+data-coins="5000"
+data-value="60.70">
+
+<div class="coin">5,000</div>
+<div class="price">Demo $60.70</div>
+
 </div>
 
 </div>
@@ -199,62 +330,92 @@ Demo interface — no real money or payment is processed.
 <option>Test Wallet</option>
 </select>
 
-<button onclick="createDemo()">Create Demo Exchange</button>
+<button onclick="createDemo()">
+Create Demo Exchange
+</button>
 
-<div class="result" id="result"></div>
+<div class="result" id="result">
 
-<div class="notice">
-<b>Security:</b> This is a demonstration interface only.
-It does not connect to TikTok, process payments, or create real
-balances. Never enter passwords, OTPs, or login codes here.
+<div class="result-title">
+DEMO ORDER CREATED
+</div>
+
+<div class="result-line" id="resultText"></div>
+
+</div>
+
+<div class="security">
+
+<b>Security:</b>
+This is a demonstration interface only.
+It does not connect to TikTok, process payments,
+or create real balances. Never enter passwords,
+login codes, or OTPs.
+
 </div>
 
 </div>
 </div>
 
 <script>
+
 let selectedCoins = 250;
 let selectedValue = 3.03;
 
-document.querySelectorAll(".pkg").forEach(pkg=>{
-  pkg.addEventListener("click",()=>{
+document.querySelectorAll(".pkg").forEach(function(pkg){
+
+  pkg.addEventListener("click",function(){
+
     document.querySelectorAll(".pkg")
-      .forEach(x=>x.classList.remove("active"));
+      .forEach(function(item){
+        item.classList.remove("active");
+      });
 
     pkg.classList.add("active");
 
-    selectedCoins = Number(pkg.dataset.coins);
-    selectedValue = Number(pkg.dataset.value);
+    selectedCoins =
+      Number(pkg.dataset.coins);
+
+    selectedValue =
+      Number(pkg.dataset.value);
+
   });
+
 });
 
 function createDemo(){
+
   const username =
-    document.getElementById("username").value.trim();
+    document.getElementById("username")
+    .value.trim();
 
   const result =
     document.getElementById("result");
 
+  const resultText =
+    document.getElementById("resultText");
+
   if(!username){
+
     result.style.display="block";
-    result.style.background="#fff3cd";
-    result.style.color="#8a6200";
-    result.textContent="Please enter a demo username.";
+
+    resultText.textContent =
+      "Please enter a demo username.";
+
     return;
   }
 
   result.style.display="block";
-  result.style.background="#eaf7ee";
-  result.style.color="#176b35";
 
-  result.innerHTML =
-    "DEMO ORDER CREATED<br>" +
+  resultText.textContent =
     username +
     " · " +
     selectedCoins.toLocaleString() +
     " coins · Demo $" +
     selectedValue.toFixed(2);
+
 }
+
 </script>
 
 </body>

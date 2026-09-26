@@ -7,183 +7,253 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   background:#f3f4f6;
   font-family:Arial,sans-serif;
   color:#111;
 }
+
 .wrap{
   max-width:520px;
   margin:auto;
-  padding:24px 16px;
+  padding:20px 14px 40px;
 }
+
 .card{
   background:#fff;
   border-radius:24px;
   padding:24px;
   box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
-.demo{
+
+.badge{
+  display:inline-block;
   background:#fff3cd;
-  color:#7a5700;
-  padding:10px 14px;
-  border-radius:12px;
+  color:#8a6200;
+  padding:8px 12px;
+  border-radius:10px;
   font-weight:700;
-  text-align:center;
-  margin-bottom:18px;
+  font-size:13px;
+  margin-bottom:14px;
 }
+
 h1{
   margin:0 0 6px;
   font-size:30px;
 }
+
 .sub{
   color:#666;
+  margin:0 0 22px;
+}
+
+.balance{
+  background:#111;
+  color:#fff;
+  border-radius:18px;
+  padding:20px;
   margin-bottom:22px;
 }
+
+.balance small{
+  color:#bbb;
+}
+
+.balance strong{
+  display:block;
+  font-size:32px;
+  margin-top:6px;
+}
+
 label{
   display:block;
   font-weight:700;
   margin:16px 0 8px;
 }
-input,select{
+
+input,select,button{
   width:100%;
-  padding:15px;
-  border:1px solid #ddd;
-  border-radius:14px;
+  padding:14px;
+  border-radius:12px;
   font-size:16px;
 }
-.balance{
-  margin:18px 0;
-  padding:20px;
-  border-radius:18px;
-  background:#f5f5f5;
-  text-align:center;
+
+input,select{
+  border:1px solid #ddd;
+  background:#fff;
 }
-.balance small{
-  display:block;
-  color:#666;
-  margin-bottom:8px;
-}
-.balance strong{
-  font-size:30px;
-}
+
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
+
 .pkg{
+  background:#fafafa;
   border:2px solid transparent;
-  background:#f5f5f5;
-  border-radius:16px;
-  padding:18px;
+  padding:16px;
+  border-radius:14px;
   cursor:pointer;
 }
+
 .pkg.active{
   border-color:#111;
-  background:#fff;
+  background:#f0f0f0;
 }
+
 .pkg b{
   display:block;
-  font-size:19px;
+  font-size:18px;
 }
+
 .pkg span{
+  display:block;
   color:#666;
+  margin-top:6px;
 }
+
 button{
-  width:100%;
-  margin-top:22px;
-  padding:16px;
   border:0;
-  border-radius:16px;
   background:#111;
   color:#fff;
-  font-size:17px;
   font-weight:700;
+  margin-top:20px;
+  cursor:pointer;
 }
-.note{
+
+.notice{
   margin-top:18px;
+  padding:16px;
+  background:#f7f7f7;
+  border-radius:14px;
   color:#666;
   font-size:13px;
   line-height:1.5;
+}
+
+.result{
+  display:none;
+  margin-top:18px;
+  padding:16px;
+  background:#eaf7ee;
+  color:#176b35;
+  border-radius:14px;
+  font-weight:700;
 }
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
 <div class="card">
 
-<div class="demo">
-DEMO ONLY — NOT REAL MONEY
-</div>
+<div class="badge">DEMO / TEST ONLY</div>
 
 <h1>Coin Exchange</h1>
-<div class="sub">
-Demo interface for testing only.
-</div>
+<p class="sub">
+Demo interface — no real money or payment is processed.
+</p>
 
-<label>Demo Balance</label>
 <div class="balance">
-<small>Sample balance</small>
-<strong>8,165,182.42</strong>
+<small>Demo balance</small>
+<strong id="balance">$8,165.18</strong>
 </div>
 
 <label for="username">TikTok username</label>
 <input id="username" placeholder="@your_username">
 
-<label>Choose a package</label>
+<label>Exchange coins</label>
 
 <div class="grid">
-<div class="pkg active" onclick="selectPkg(this)">
-<b>250 Coins</b>
-<span>Demo package</span>
+
+<div class="pkg active" data-coins="250" data-value="3.03">
+<b>🪙 250</b>
+<span>Demo $3.03</span>
 </div>
 
-<div class="pkg" onclick="selectPkg(this)">
-<b>500 Coins</b>
-<span>Demo package</span>
+<div class="pkg" data-coins="500" data-value="6.07">
+<b>🪙 500</b>
+<span>Demo $6.07</span>
 </div>
 
-<div class="pkg" onclick="selectPkg(this)">
-<b>1,500 Coins</b>
-<span>Demo package</span>
+<div class="pkg" data-coins="1500" data-value="18.21">
+<b>🪙 1,500</b>
+<span>Demo $18.21</span>
 </div>
 
-<div class="pkg" onclick="selectPkg(this)">
-<b>5,000 Coins</b>
-<span>Demo package</span>
-</div>
+<div class="pkg" data-coins="5000" data-value="60.70">
+<b>🪙 5,000</b>
+<span>Demo $60.70</span>
 </div>
 
-<label>Payment method</label>
-<select>
-<option>Demo Payment</option>
-<option>Test Mode</option>
+</div>
+
+<label for="method">Exchange method</label>
+
+<select id="method">
+<option>Demo Exchange</option>
+<option>Test Wallet</option>
 </select>
 
-<button onclick="demoOrder()">
-Create Demo Order
-</button>
+<button onclick="createDemo()">Create Demo Exchange</button>
 
-<div class="note">
-This page is a visual demonstration only. It does not connect to TikTok,
-process payments, or represent a real account balance.
+<div class="result" id="result"></div>
+
+<div class="notice">
+<b>Security:</b> This is a demonstration interface only.
+It does not connect to TikTok, process payments, or create real
+balances. Never enter passwords, OTPs, or login codes here.
 </div>
 
 </div>
 </div>
 
 <script>
-function selectPkg(el){
-  document.querySelectorAll('.pkg')
-    .forEach(x=>x.classList.remove('active'));
-  el.classList.add('active');
-}
+let selectedCoins = 250;
+let selectedValue = 3.03;
 
-function demoOrder(){
-  alert("Demo order created — no real payment was processed.");
+document.querySelectorAll(".pkg").forEach(pkg=>{
+  pkg.addEventListener("click",()=>{
+    document.querySelectorAll(".pkg")
+      .forEach(x=>x.classList.remove("active"));
+
+    pkg.classList.add("active");
+
+    selectedCoins = Number(pkg.dataset.coins);
+    selectedValue = Number(pkg.dataset.value);
+  });
+});
+
+function createDemo(){
+  const username =
+    document.getElementById("username").value.trim();
+
+  const result =
+    document.getElementById("result");
+
+  if(!username){
+    result.style.display="block";
+    result.style.background="#fff3cd";
+    result.style.color="#8a6200";
+    result.textContent="Please enter a demo username.";
+    return;
+  }
+
+  result.style.display="block";
+  result.style.background="#eaf7ee";
+  result.style.color="#176b35";
+
+  result.innerHTML =
+    "DEMO ORDER CREATED<br>" +
+    username +
+    " · " +
+    selectedCoins.toLocaleString() +
+    " coins · Demo $" +
+    selectedValue.toFixed(2);
 }
 </script>
 
